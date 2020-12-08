@@ -39,3 +39,18 @@
 
 # Wireframes
 [wireframes](https://docs.google.com/presentation/d/1tcl82zAP9O43cuEmZUyiDnbGFkUfc7JHlx5-tBRHMNs/edit?usp=sharing)
+
+
+# API curl tests
+
+## User
+1. Sign up - WORKS
+1. Sign in - WORKS
+1. Sign out - WORKS
+1. Change Password - WORKS
+2.
+## Game
+1. Get all game - WORKS
+1. Get one game - WORKS
+1. Create a new game - WORKS
+1. Update game - WORKS

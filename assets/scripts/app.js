@@ -10,4 +10,5 @@ $(() => {
   $('#change-password').on('submit', authEvents.onChangePassword)
   $('#sign-out').on('click', authEvents.onSignOut)
   $('#start-new-game').on('click', gameEvents.onStartNewGame)
+  $('.game-space').click(gameEvents.onMarkerPlacement)
 })

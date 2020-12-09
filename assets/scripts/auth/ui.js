@@ -16,6 +16,7 @@ const signInSuccess = function (response) {
   console.log(store.user)
   $('.unauthenticated').hide()
   $('.authenticated').show()
+  $('#game-board-display').hide()
   $('form').trigger('reset')
 }
 const signInFailure = function (onError) {

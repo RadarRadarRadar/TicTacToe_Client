@@ -10,14 +10,15 @@ const createNewGameSuccess = function (response) {
 }
 
 const createNewGameFail = function () {
-  $('#message').text('Game Created')
+  $('#message').text('Game Not Created')
   console.log('Oh Shit')
 }
 
 const markerPlacementSuccess = function (response) {
-  // console.log(response)
-  store.game = response.game
-  console.log('worked')
+  console.log(response)
+  store.game.cells = response.game.cells
+  // console.log('worked')
+  console.log(store.game.cells)
 }
 
 module.exports = {

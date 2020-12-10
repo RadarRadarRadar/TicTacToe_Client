@@ -4,10 +4,26 @@ const ui = require('./ui')
 const store = require('./../store')
 
 // const getFormFields = require('./../../../lib/get-form-fields')
+let currentPlayerMark
+
+const playerOneMark = 'X'
+const playerTwoMark = 'O'
+
+// currentPlayerMark = playerOneMark
+
+const handleTurn = function () {
+  if (currentPlayerMark === playerOneMark) {
+    currentPlayerMark = playerTwoMark
+  } else {
+    currentPlayerMark = playerOneMark
+  };
+  return currentPlayerMark
+}
 
 const onStartNewGame = function (event) {
   event.preventDefault()
-  // currentPlayer = playerOneMark
+  currentPlayerMark = playerOneMark
+  console.log(currentPlayerMark)
   api.startNewGame()
     // .then(function (response) {
     //   console.log(response)
@@ -18,43 +34,31 @@ const onStartNewGame = function (event) {
 }
 
 const onMarkerPlacement = function (event) {
-  $(event.target).html(currentPlayerMark)
+  event.preventDefault()
   const cellIndex = $(event.target).data('cell-index')
-  console.log(cellIndex)
+  // console.log(cellIndex)
 
   const gameArray = store.game.cells
-  console.log(gameArray)
+  // console.log(gameArray)
 
   const gameArrayIndex = gameArray[cellIndex]
-  console.log(gameArrayIndex)
+  // console.log(gameArrayIndex)
 
-  if (gameArrayIndex !== 'X') {
+  if (gameArrayIndex !== playerOneMark && gameArrayIndex !== playerTwoMark) {
     api.markerPlacement(cellIndex, currentPlayerMark)
       .then(ui.markerPlacementSuccess)
       .catch(ui.markerPlacement)
+    $(event.target).html(currentPlayerMark)
+    handleTurn()
   } else {
     console.log('Not a legal move')
   }
+  console.log(gameArray)
 }
 
 //   api.markerPlacement(cellIndex, currentPlayerMark)
 //     .then(ui.markerPlacementSuccess)
 //     .catch(ui.markerPlacement)
-// }
-
-let currentPlayerMark = 'X'
-//
-const playerOneMark = 'X'
-const playerTwoMark = 'O'
-//
-// let currentPlayer
-//
-// const handleTurn = function (currentPlayer) {
-//   if (currentPlayer === playerOneMark) {
-//     currentPlayer = playerTwoMark
-//   } else {
-//     currentPlayer = playerOneMark
-//   }
 // }
 
 module.exports = {

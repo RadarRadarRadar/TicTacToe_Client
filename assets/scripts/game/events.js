@@ -24,6 +24,7 @@ const onStartNewGame = function (event) {
   event.preventDefault()
   currentPlayerMark = playerOneMark
   console.log(currentPlayerMark)
+  $('.game-space').html(' ')
   api.startNewGame()
     // .then(function (response) {
     //   console.log(response)

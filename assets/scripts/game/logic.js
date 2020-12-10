@@ -3,34 +3,60 @@ const store = require('../store')
 
 // const gameArray = store.game.cells
 
-const triggerWinner = function(gameArray, winCons) {
-  if
+// const gameArray = ['', '', 'X', '', '', 'X', '', '', 'X']
+
+const checkWin = function (gameArray) {
+  if (gameArray[0] !== '' && gameArray[0] === gameArray[1] && gameArray[0] === gameArray[2]) {
+    console.log('winner')
+    $('#message').text('Winner!')
+  } else if (gameArray[3] !== '' && gameArray[3] === gameArray[4] && gameArray[3] === gameArray[5]) {
+    console.log('winner')
+    $('#message').text('Winner!')
+  } else if (gameArray[6] !== '' && gameArray[6] === gameArray[7] && gameArray[6] === gameArray[8]) {
+    console.log('winner')
+    $('#message').text('Winner!')
+  } else if (gameArray[0] !== '' && gameArray[0] === gameArray[3] && gameArray[0] === gameArray[6]) {
+    console.log('winner')
+    $('#message').text('Winner!')
+  } else if (gameArray[1] !== '' && gameArray[1] === gameArray[4] && gameArray[1] === gameArray[7]) {
+    console.log('winner')
+    $('#message').text('Winner!')
+  } else if (gameArray[2] !== '' && gameArray[2] === gameArray[5] && gameArray[2] === gameArray[8]) {
+    console.log('winner')
+    $('#message').text('Winner!')
+  } else if (gameArray[0] !== '' && gameArray[0] === gameArray[4] && gameArray[0] === gameArray[8]) {
+    console.log('winner')
+    $('#message').text('Winner!')
+  } else if (gameArray[2] !== '' && gameArray[2] === gameArray[4] && gameArray[2] === gameArray[6]) {
+    console.log('winner')
+    $('#message').text('Winner!')
+  } else {
+    console.log('next move')
+  }
 }
 
-const gameArray = ['', '', 'X', '', '', 'X', '', '', 'X']
-
-const winCons = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8],
-  [0, 4, 8],
-  [2, 4, 6]
-]
-
-function checkWin() {
-  winCons.forEach(function(element, index, gameArray) {
-      console.log(gameArray[element[0]])
-
-      if (gameArray[element[0]] === gameArray[element[0]] &&
-        gameArray[element[1]] === gameArray[element[0]] &&
-        gameArray[element[2]] === gameArray[element[0]]) {
-        console.log('winner')
-      }
-    })
-  }
+// const winCons = [
+//   [0, 1, 2],
+//   [3, 4, 5],
+//   [6, 7, 8],
+//   [0, 3, 6],
+//   [1, 4, 7],
+//   [2, 5, 8],
+//   [0, 4, 8],
+//   [2, 4, 6]
+// ]
+//
+//
+// function checkWin() {
+//   winCons.forEach(function(element, index) {
+//     if (gameArray[element[0]] === gameArray[element[1]] &&
+//       gameArray[element[0]] === gameArray[element[2]]) {
+//       console.log('winner')
+//     } else {
+//       console.log('loser')
+//     }
+//   });
+// }
 
 
 // if
@@ -70,3 +96,6 @@ function checkWin() {
 // If they any are trigger the winner function.
 // If not test for a draw.
 // If still not, log the turn and proceed to handle the turn.
+module.exports = {
+  checkWin
+}

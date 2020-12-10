@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('../store')
+const logic = require('./logic')
 
 // I want to make something here to reset the board HTML on success
 const createNewGameSuccess = function (response) {
@@ -16,10 +17,12 @@ const createNewGameFail = function () {
 }
 
 const markerPlacementSuccess = function (response) {
-  console.log(response)
+  // console.log(response)
   store.game.cells = response.game.cells
+  const responseGameArray = store.game.cells
   // console.log('worked')
-  console.log(store.game.cells)
+  console.log(responseGameArray)
+  logic.checkWin(responseGameArray)
 }
 
 const markerPlacementFail = function () {

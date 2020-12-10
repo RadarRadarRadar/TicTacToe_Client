@@ -2,6 +2,7 @@
 
 const store = require('../store')
 
+// I want to make something here to reset the board HTML on success
 const createNewGameSuccess = function (response) {
   $('#message').text('Game Created')
   $('#game-board-display').show()
@@ -10,7 +11,7 @@ const createNewGameSuccess = function (response) {
 }
 
 const createNewGameFail = function () {
-  $('#message').text('Game Not Created')
+  $('#message').text('Game Not Created Big Ooph')
   console.log('Oh Shit')
 }
 
@@ -21,8 +22,14 @@ const markerPlacementSuccess = function (response) {
   console.log(store.game.cells)
 }
 
+const markerPlacementFail = function () {
+  $('#message').text('Not a Legal Move Try Again')
+  console.log('Oh Shit')
+}
+
 module.exports = {
   createNewGameSuccess,
   createNewGameFail,
-  markerPlacementSuccess
+  markerPlacementSuccess,
+  markerPlacementFail
 }

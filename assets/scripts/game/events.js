@@ -47,10 +47,12 @@ const onMarkerPlacement = function (event) {
   if (gameArrayIndex !== playerOneMark && gameArrayIndex !== playerTwoMark) {
     api.markerPlacement(cellIndex, currentPlayerMark)
       .then(ui.markerPlacementSuccess)
-      .catch(ui.markerPlacement)
+      .catch(ui.markerPlacementFail)
     $(event.target).html(currentPlayerMark)
     handleTurn()
+    $('#message').text(`${currentPlayerMark}'s turn to place`)
   } else {
+    ui.markerPlacementFail()
     console.log('Not a legal move')
   }
   console.log(gameArray)
@@ -63,5 +65,6 @@ const onMarkerPlacement = function (event) {
 
 module.exports = {
   onStartNewGame,
-  onMarkerPlacement
+  onMarkerPlacement,
+  currentPlayerMark
 }

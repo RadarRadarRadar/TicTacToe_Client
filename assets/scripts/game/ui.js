@@ -7,6 +7,7 @@ const logic = require('./logic')
 const createNewGameSuccess = function (response) {
   $('#message').text('Game Created')
   $('#game-board-display').show()
+  $('.game-space').on()
   store.game = response.game
   // console.log(store.game)
 }
@@ -18,11 +19,13 @@ const createNewGameFail = function () {
 
 const markerPlacementSuccess = function (response) {
   // console.log(response)
-  store.game.cells = response.game.cells
-  const responseGameArray = store.game.cells
+  store.game = response.game
+  const responseGameArray = store.game
+  // const gameState = store.game.over
   // console.log('worked')
   console.log(responseGameArray)
-  logic.checkWin(responseGameArray)
+  // console.log(store.game.over)
+  // logic.checkWin(responseGameArray)
 }
 
 const markerPlacementFail = function () {

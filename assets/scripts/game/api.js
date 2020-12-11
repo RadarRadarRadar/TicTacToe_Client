@@ -14,7 +14,7 @@ const startNewGame = function (data) {
   })
 }
 
-const markerPlacement = function (cellIndex, currentPlayerMark) {
+const markerPlacement = function (cellIndex, currentPlayerMark, currentGameState) {
   return $.ajax({
     url: config.apiUrl + '/games/' + store.game._id,
     method: 'PATCH',
@@ -22,12 +22,12 @@ const markerPlacement = function (cellIndex, currentPlayerMark) {
       Authorization: 'Bearer ' + store.user.token
     },
     data: {
-      "game": {
-        "cell": {
-          "index": cellIndex,
-          "value": currentPlayerMark
+      game: {
+        cell: {
+          index: cellIndex,
+          value: currentPlayerMark
         },
-        "over": false
+        over: currentGameState
       }
     }
   })

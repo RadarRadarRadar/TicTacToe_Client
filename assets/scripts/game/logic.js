@@ -2,37 +2,45 @@
 const store = require('../store')
 
 // const gameArray = store.game.cells
-
+// const gameState = store.game.over
 // const gameArray = ['', '', 'X', '', '', 'X', '', '', 'X']
 
 const checkWin = function (gameArray) {
+  const isPopulated = (currentValue) => currentValue !== ''
+  let gameState = store.game.over // I know this is false
+  // console.log(gameState)
   if (gameArray[0] !== '' && gameArray[0] === gameArray[1] && gameArray[0] === gameArray[2]) {
-    console.log('winner')
-    $('#message').text('Winner!')
+    // console.log(gameState)
+    gameState = true
   } else if (gameArray[3] !== '' && gameArray[3] === gameArray[4] && gameArray[3] === gameArray[5]) {
-    console.log('winner')
-    $('#message').text('Winner!')
+    // console.log(gameState)
+    gameState = true
   } else if (gameArray[6] !== '' && gameArray[6] === gameArray[7] && gameArray[6] === gameArray[8]) {
-    console.log('winner')
-    $('#message').text('Winner!')
+    // console.log(gameState)
+    gameState = true
   } else if (gameArray[0] !== '' && gameArray[0] === gameArray[3] && gameArray[0] === gameArray[6]) {
-    console.log('winner')
-    $('#message').text('Winner!')
+    // console.log(gameState)
+    gameState = true
   } else if (gameArray[1] !== '' && gameArray[1] === gameArray[4] && gameArray[1] === gameArray[7]) {
-    console.log('winner')
-    $('#message').text('Winner!')
+    // console.log(gameState)
+    gameState = true
   } else if (gameArray[2] !== '' && gameArray[2] === gameArray[5] && gameArray[2] === gameArray[8]) {
-    console.log('winner')
-    $('#message').text('Winner!')
+    // console.log(gameState)
+    gameState = true
   } else if (gameArray[0] !== '' && gameArray[0] === gameArray[4] && gameArray[0] === gameArray[8]) {
-    console.log('winner')
-    $('#message').text('Winner!')
+    // console.log(gameState)
+    gameState = true
   } else if (gameArray[2] !== '' && gameArray[2] === gameArray[4] && gameArray[2] === gameArray[6]) {
-    console.log('winner')
-    $('#message').text('Winner!')
-  } else {
-    console.log('next move')
+    gameState = true
+    // console.log(gameState)
+  } else if (gameArray.every(isPopulated) === true) {
+    gameState = true
+    $('#game-message').html('It is a tie!')
+    // $('#game-board-display').hide()
+    console.log('TIE!')
+    // console.log(gameState)
   }
+  return gameState
 }
 
 // const winCons = [
@@ -78,7 +86,7 @@ const checkWin = function (gameArray) {
 // gameState = store.game.over
 
 // handleGameOver = function () {
-//  gameState = 'true'
+ // gameState = 'true'
 // }
 
 

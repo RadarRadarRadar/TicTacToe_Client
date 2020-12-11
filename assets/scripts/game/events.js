@@ -26,6 +26,7 @@ const onStartNewGame = function (event) {
   currentPlayerMark = playerOneMark
   // console.log(currentPlayerMark)
   $('.game-space').html(' ')
+  $('.game-space').click(onMarkerPlacement)
   api.startNewGame()
     // .then(function (response) {
     //   console.log(response)
@@ -47,19 +48,27 @@ const onMarkerPlacement = function (event) {
   // console.log('this is the game array index the mark will be added to ' + gameArrayIndex)
 
   if (gameArrayIndex !== playerOneMark && gameArrayIndex !== playerTwoMark) {
-    api.markerPlacement(cellIndex, currentPlayerMark)
+    //  store.game.cells[cellIndex] = currentPlayerMark
+    gameArray[cellIndex] = currentPlayerMark
+    // console.log(gameArray)
+    const currentGameState = logic.checkWin(gameArray)
+    if (currentGameState === true) {
+      $('.game-space').off()
+    }
+
+    $(event.target).html(currentPlayerMark)
+
+    api.markerPlacement(cellIndex, currentPlayerMark, currentGameState)
       .then(ui.markerPlacementSuccess)
       .catch(ui.markerPlacementFail)
-    $(event.target).html(currentPlayerMark)
-    // logic.checkWin(gameArray)
+
     turnOver()
     $('#message').text(`${currentPlayerMark}'s turn to place`)
   } else {
     ui.markerPlacementFail()
     console.log('Not a legal move')
   }
-  console.log(gameArray)
-  console.log(store.game.cells)
+  // console.log(gameArray)
 }
 
 //   api.markerPlacement(cellIndex, currentPlayerMark)

@@ -12,36 +12,52 @@ const checkWin = function (gameArray) {
   if (gameArray[0] !== '' && gameArray[0] === gameArray[1] && gameArray[0] === gameArray[2]) {
     // console.log(gameState)
     gameState = true
+    $('#win-message').html('Winner!')
   } else if (gameArray[3] !== '' && gameArray[3] === gameArray[4] && gameArray[3] === gameArray[5]) {
     // console.log(gameState)
     gameState = true
+    $('#win-message').html('Winner!')
   } else if (gameArray[6] !== '' && gameArray[6] === gameArray[7] && gameArray[6] === gameArray[8]) {
     // console.log(gameState)
     gameState = true
+    $('#win-message').html('Winner!')
   } else if (gameArray[0] !== '' && gameArray[0] === gameArray[3] && gameArray[0] === gameArray[6]) {
     // console.log(gameState)
     gameState = true
+    $('#win-message').html('Winner!')
   } else if (gameArray[1] !== '' && gameArray[1] === gameArray[4] && gameArray[1] === gameArray[7]) {
     // console.log(gameState)
     gameState = true
+    $('#win-message').html('Winner!')
   } else if (gameArray[2] !== '' && gameArray[2] === gameArray[5] && gameArray[2] === gameArray[8]) {
     // console.log(gameState)
     gameState = true
+    $('#win-message').html('Winner!')
   } else if (gameArray[0] !== '' && gameArray[0] === gameArray[4] && gameArray[0] === gameArray[8]) {
     // console.log(gameState)
     gameState = true
+    $('#win-message').html('Winner!')
   } else if (gameArray[2] !== '' && gameArray[2] === gameArray[4] && gameArray[2] === gameArray[6]) {
     gameState = true
+    $('#win-message').html('Winner!')
     // console.log(gameState)
   } else if (gameArray.every(isPopulated) === true) {
     gameState = true
-    $('#game-message').html('It is a tie!')
+    $('#win-message').html('It is a tie!')
     // $('#game-board-display').hide()
     console.log('TIE!')
     // console.log(gameState)
   }
   return gameState
 }
+
+// const checkDraw = function (gameArray) {
+//   const isPopulated = (currentValue) => currentValue !== ''
+//   if (gameArray.every(isPopulated) === true) {
+//     gameState = true
+//   }
+//   return gameState
+// }
 
 // const winCons = [
 //   [0, 1, 2],
@@ -106,4 +122,5 @@ const checkWin = function (gameArray) {
 // If still not, log the turn and proceed to handle the turn.
 module.exports = {
   checkWin
+  // checkDraw
 }

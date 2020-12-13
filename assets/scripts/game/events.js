@@ -25,8 +25,12 @@ const onStartNewGame = function (event) {
   event.preventDefault()
   currentPlayerMark = playerOneMark
   // console.log(currentPlayerMark)
-  $('.game-space').html(' ')
+  $('#player-message').text(`Game Created. It is ${currentPlayerMark}'s Turn.`)
+  $('.game-space').html('')
+  $('#win-message').text('')
+  $('#games-played-message').text('')
   $('.game-space').click(onMarkerPlacement)
+  // store.game = null
   api.startNewGame()
     // .then(function (response) {
     //   console.log(response)
@@ -38,6 +42,7 @@ const onStartNewGame = function (event) {
 
 const onMarkerPlacement = function (event) {
   event.preventDefault()
+  $('#games-played-message').text('')
   const cellIndex = $(event.target).data('cell-index')
   // console.log('this is the div data clicked ' + cellIndex)
 
@@ -52,23 +57,42 @@ const onMarkerPlacement = function (event) {
     gameArray[cellIndex] = currentPlayerMark
     // console.log(gameArray)
     const currentGameState = logic.checkWin(gameArray)
-    if (currentGameState === true) {
-      $('.game-space').off()
-    }
 
     $(event.target).html(currentPlayerMark)
+
+    // if (currentGameState === false) {
+    //   // $(event.target).html(currentPlayerMark)
+    //   turnOver()
+    //   $('#player-message').text(`${currentPlayerMark}'s turn to place`)
+    // } else if (currentGameState === true) {
+    //   $('.game-space').off()
+    //   $('#player-message').text('')
+    // }
+
+    // $(event.target).html(currentPlayerMark)
 
     api.markerPlacement(cellIndex, currentPlayerMark, currentGameState)
       .then(ui.markerPlacementSuccess)
       .catch(ui.markerPlacementFail)
 
     turnOver()
-    $('#message').text(`${currentPlayerMark}'s turn to place`)
+    $('#player-message').text(`${currentPlayerMark}'s turn to place`)
+    if (currentGameState === true) {
+      $('.game-space').off()
+      $('#player-message').text(' ')
+    }
   } else {
     ui.markerPlacementFail()
     console.log('Not a legal move')
   }
   // console.log(gameArray)
+}
+
+const onCheckGamesPlayed = function (event) {
+  event.preventDefault()
+  api.checkGamesPlayed()
+    .then(ui.checkGamesPlayedSuccess)
+    .catch(ui.checkGamesPlayedFail)
 }
 
 //   api.markerPlacement(cellIndex, currentPlayerMark)
@@ -79,5 +103,6 @@ const onMarkerPlacement = function (event) {
 module.exports = {
   onStartNewGame,
   onMarkerPlacement,
-  currentPlayerMark
+  currentPlayerMark,
+  onCheckGamesPlayed
 }

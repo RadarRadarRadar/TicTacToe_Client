@@ -33,7 +33,18 @@ const markerPlacement = function (cellIndex, currentPlayerMark, currentGameState
   })
 }
 
+const checkGamesPlayed = function () {
+  return $.ajax({
+    url: config.apiUrl + '/games',
+    method: 'GET',
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   startNewGame,
-  markerPlacement
+  markerPlacement,
+  checkGamesPlayed
 }

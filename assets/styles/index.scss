@@ -1,7 +1,29 @@
 @import '~bootstrap/scss/bootstrap';
 
+button {
+  margin: 5px;
+  padding: 5px;
+  justify-content: center;
+}
+
+input {
+  margin: 5px;
+  padding: 5px;
+  justify-content: center;
+}
+
+.container {
+  height: 375px;
+  justify-content: center;
+  width: 300px;
+}
+
 .box {
   border: 1px solid;
   height: 100px;
   width: 100px;
+}
+
+.row {
+  height: 300px;
 }

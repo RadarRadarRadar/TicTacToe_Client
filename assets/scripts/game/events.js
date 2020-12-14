@@ -26,22 +26,25 @@ const onStartNewGame = function (event) {
   currentPlayerMark = playerOneMark
   // console.log(currentPlayerMark)
   $('#player-message').text(`Game Created. It is ${currentPlayerMark}'s Turn.`)
-  $('.game-space').html('')
+  $('#game-board-display').show()
+  $('.game-space').off()
+  $('.game-space').on()
   $('#win-message').text('')
   $('#games-played-message').text('')
   $('.game-space').click(onMarkerPlacement)
+  $('.game-space').html('')
   // store.game = null
   api.startNewGame()
-    // .then(function (response) {
-    //   console.log(response)
-    //   return response
-    // })
+    .then(function (response) {
+      console.log(response)
+      return response
+    })
     .then(ui.createNewGameSuccess)
     .catch(ui.createNewGameFail)
 }
 
 const onMarkerPlacement = function (event) {
-  event.preventDefault()
+  // event.preventDefault()
   $('#games-played-message').text('')
   const cellIndex = $(event.target).data('cell-index')
   // console.log('this is the div data clicked ' + cellIndex)
@@ -72,6 +75,10 @@ const onMarkerPlacement = function (event) {
     // $(event.target).html(currentPlayerMark)
 
     api.markerPlacement(cellIndex, currentPlayerMark, currentGameState)
+      .then(function (response) {
+        console.log(response)
+        return response
+      })
       .then(ui.markerPlacementSuccess)
       .catch(ui.markerPlacementFail)
 
@@ -79,7 +86,7 @@ const onMarkerPlacement = function (event) {
     $('#player-message').text(`${currentPlayerMark}'s turn to place`)
     if (currentGameState === true) {
       $('.game-space').off()
-      $('#player-message').text(' ')
+      $('#player-message').text('')
     }
   } else {
     ui.markerPlacementFail()

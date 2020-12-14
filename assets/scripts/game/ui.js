@@ -1,13 +1,14 @@
 'use strict'
 
 const store = require('../store')
-const logic = require('./logic')
+// const logic = require('./logic')
+// const events = require('./events')
 
 // I want to make something here to reset the board HTML on success
 const createNewGameSuccess = function (response) {
   // $('#player-message').text('Game Created')
-  $('#game-board-display').show()
-  $('.game-space').on()
+  // $('#game-board-display').show()
+  // $('.game-space').on()
   store.game = response.game
   // console.log(store.game)
 }

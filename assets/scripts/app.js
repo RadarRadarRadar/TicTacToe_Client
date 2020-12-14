@@ -11,4 +11,5 @@ $(() => {
   $('#sign-out').on('click', authEvents.onSignOut)
   $('#start-new-game').on('click', gameEvents.onStartNewGame)
   $('#check-games-played').on('click', gameEvents.onCheckGamesPlayed)
+  $('#player-mark-select').on('submit', gameEvents.onPlayerMarkPick)
 })

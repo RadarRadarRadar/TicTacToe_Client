@@ -3,12 +3,13 @@ const api = require('./api')
 const ui = require('./ui')
 const store = require('./../store')
 const logic = require('./logic')
+const getFormFields = require('./../../../lib/get-form-fields')
 
 // const getFormFields = require('./../../../lib/get-form-fields')
 let currentPlayerMark
 
-const playerOneMark = 'X'
-const playerTwoMark = 'O'
+let playerOneMark = 'X'
+let playerTwoMark = 'O'
 
 // currentPlayerMark = playerOneMark
 
@@ -21,8 +22,18 @@ const turnOver = function () {
   return currentPlayerMark
 }
 
+const checkPlayers = function (playerOneMark, playerTwoMark) {
+  if (playerOneMark === undefined) {
+    playerOneMark = 'X'
+  }
+  if (playerTwoMark === undefined) {
+    playerTwoMark = 'O'
+  }
+}
+
 const onStartNewGame = function (event) {
-  event.preventDefault()
+  // event.preventDefault()
+  checkPlayers(playerOneMark, playerTwoMark)
   currentPlayerMark = playerOneMark
   // console.log(currentPlayerMark)
   $('#player-message').text(`Game Created. It is ${currentPlayerMark}'s Turn.`)
@@ -92,7 +103,6 @@ const onMarkerPlacement = function (event) {
     ui.markerPlacementFail()
     console.log('Not a legal move')
   }
-  // console.log(gameArray)
 }
 
 const onCheckGamesPlayed = function (event) {
@@ -102,14 +112,20 @@ const onCheckGamesPlayed = function (event) {
     .catch(ui.checkGamesPlayedFail)
 }
 
-//   api.markerPlacement(cellIndex, currentPlayerMark)
-//     .then(ui.markerPlacementSuccess)
-//     .catch(ui.markerPlacement)
-// }
+const onPlayerMarkPick = function (event) {
+  event.preventDefault(event)
+  const form = event.target
+  const data = getFormFields(form)
+  console.log(data.credentials.playerOneMark)
+  playerOneMark = data.credentials.playerOne
+  playerTwoMark = data.credentials.playerTwo
+  onStartNewGame()
+}
 
 module.exports = {
   onStartNewGame,
   onMarkerPlacement,
   currentPlayerMark,
-  onCheckGamesPlayed
+  onCheckGamesPlayed,
+  onPlayerMarkPick
 }

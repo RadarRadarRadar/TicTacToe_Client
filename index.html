@@ -47,12 +47,20 @@
       <!-- <button id="change-password-form" type="submit">Change Password</button> -->
     </div>
     <div>
+      <!-- <button id="show-password-change" type="submit">Change Password</button> -->
       <form id="change-password" data-status="0">
         <input name="passwords[old]" type="password" placeholder="old password" />
         <input name="passwords[new]" type="password" placeholder="new password" />
         <button type="submit">Submit New Password</button>
       </form>
     </div>
+    <form id="player-mark-select">
+      <input name="credentials[playerOne]" type="text" placeholder="First Player Mark" />
+      <input name="credentials[playerTwo]" type="text" placeholder="Second Player Mark" />
+      <div>
+        <button type="submit">Lock In Choices & Start</button>
+      </div>
+    </form>
     <div id="game-display">
       <button id="start-new-game" type="submit">Start New Game</button>
     </div>

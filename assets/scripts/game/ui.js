@@ -15,7 +15,6 @@ const createNewGameSuccess = function (response) {
 
 const createNewGameFail = function () {
   $('#player-message').text('Game Not Created Big Ooph')
-  console.log('Oh Shit')
 }
 
 const markerPlacementSuccess = function (response) {
@@ -31,11 +30,9 @@ const markerPlacementSuccess = function (response) {
 
 const markerPlacementFail = function () {
   $('#player-message').text('Not a Legal Move Try Again')
-  console.log('Oh Shit')
 }
 
 const checkGamesPlayedSuccess = function (response) {
-  // console.log(response)
   store.games = response.games
   const gamesPlayedArray = store.games
   const gamesPlayed = gamesPlayedArray.length
@@ -47,7 +44,7 @@ const checkGamesPlayedSuccess = function (response) {
 }
 
 const checkGamesPlayedFail = function () {
-  console.log('Oh Shit')
+  $('#player-message').text('It Broke')
 }
 
 module.exports = {

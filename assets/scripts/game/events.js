@@ -47,7 +47,7 @@ const onStartNewGame = function (event) {
   // store.game = null
   api.startNewGame()
     .then(function (response) {
-      console.log(response)
+      // console.log(response)
       return response
     })
     .then(ui.createNewGameSuccess)
@@ -87,7 +87,7 @@ const onMarkerPlacement = function (event) {
 
     api.markerPlacement(cellIndex, currentPlayerMark, currentGameState)
       .then(function (response) {
-        console.log(response)
+        // console.log(response)
         return response
       })
       .then(ui.markerPlacementSuccess)
@@ -101,7 +101,7 @@ const onMarkerPlacement = function (event) {
     }
   } else {
     ui.markerPlacementFail()
-    console.log('Not a legal move')
+    // console.log('Not a legal move')
   }
 }
 

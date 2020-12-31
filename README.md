@@ -54,3 +54,23 @@
 1. Get one game - WORKS
 1. Create a new game - WORKS
 1. Update game - WORKS
+
+# Tech Used
+
+1. Javascript
+1. HTML
+1. Bootstrap
+1. SCSS
+1. Ajax
+1. Jquery
+1. Shell
+
+# Planning Process
+
+  The first step in my planning process was to break the requirements and the game of TicTacToe down into it's basic parts and to plan my wireframes, user stories and javascript constants from there.  Using wireframes I mapped out a basic idea of how I wanted things to look. I created user stories for my project requirements and then started planning my constants for my script.  I knew I was going to be interacting with an API so I first used curl scripts to test the Api's responses.  Once I confirmed these worked I began the coding for each Api interaction.
+
+# Dev Process
+
+
+
+# Problem Solving Process

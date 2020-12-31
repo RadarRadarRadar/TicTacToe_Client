@@ -45,7 +45,7 @@ const checkWin = function (gameArray) {
     gameState = true
     $('#win-message').html('It is a tie!')
     // $('#game-board-display').hide()
-    console.log('TIE!')
+    // console.log('TIE!')
     // console.log(gameState)
   }
   return gameState

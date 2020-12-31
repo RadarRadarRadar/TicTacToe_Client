@@ -20,7 +20,7 @@ const onSignIn = function (event) {
 
   const form = event.target
   const data = getFormFields(form)
-  console.log(data)
+
   api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)

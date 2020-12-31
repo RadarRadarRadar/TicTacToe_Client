@@ -13,7 +13,6 @@ const signUpFailure = function (onError) {
 const signInSuccess = function (response) {
   $('#message').text('Sign In Successfully!')
   store.user = response.user
-  // console.log(store.user)
   $('.unauthenticated').hide()
   $('.authenticated').show()
   $('#game-board-display').hide()

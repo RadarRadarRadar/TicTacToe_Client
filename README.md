@@ -67,10 +67,18 @@
 
 # Planning Process
 
-  The first step in my planning process was to break the requirements and the game of TicTacToe down into it's basic parts and to plan my wireframes, user stories and javascript constants from there.  Using wireframes I mapped out a basic idea of how I wanted things to look. I created user stories for my project requirements and then started planning my constants for my script.  I knew I was going to be interacting with an API so I first used curl scripts to test the Api's responses.  Once I confirmed these worked I began the coding for each Api interaction.
+  The first step in my planning process was to break the requirements and the game of TicTacToe down into it's basic parts and to plan my wireframes, user stories and javascript constants from there.  Using wireframes I mapped out a basic idea of how I wanted things to look. I created user stories for my project requirements.
 
 # Dev Process
 
+  Auth:
 
+  I started my Dev process by creating a simple HTML and CSS.  I wanted just enough functionality that I could test all my requirements with it.  I knew I was going to be interacting with an API so I first used curl scripts to test the Api's responses.  Once I confirmed these worked I began the coding for each Api interaction.  This was pretty straight forward and besides missing an s on the end of a word I didn't have many bugs.  I next began work on the code for the game it self.
+
+  Game:
+
+  For the game I wanted to have all thing trigger on the placement of a player mark.  I used the store to store a game response from the api. I use the array that is returned from the api to store my player marks and be checked for the player win.  When a win happens the game board is turned off.  New game turns it back on.  This let me use the create new game button to complete two requirements at once. Finally I broke out the check win function into it's own file.
 
 # Problem Solving Process
+
+  The two big problems I encountered were checking for the win and giving the api all the correct information at the right time.  It took me a bit of reordering to make my update game api call work correctly. Figuring out that I could use the information my store file as a temp copy of the game being played got me over this hurdle.
